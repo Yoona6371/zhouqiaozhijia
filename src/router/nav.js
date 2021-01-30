@@ -8,7 +8,6 @@ import Home from '../pages/home';
 import ImageShow from '../pages/ImageShow';
 
 // 组件
-import Tab from '../router/tab';
 import LocalStorageUtils from '../utils/LocalStorageUtils';
 
 // 测试
@@ -32,7 +31,7 @@ class Nav extends React.Component {
   render() {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Tab" headerMode={'none'}>
+        <Stack.Navigator initialRouteName="Home" headerMode={'none'}>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Test" component={Test} />
           {/*<Stack.Screen name="Tab" component={Tab} />*/}
