@@ -81,8 +81,6 @@ export default class Avatar extends Component {
               width: pxToDp(size),
               height: pxToDp(size),
               borderRadius: pxToDp(size) / 2,
-              borderColor: isVip ? '#FEF5E7' : '#fff',
-              borderWidth: pxToDp(4),
             }}
             source={image}
           />
@@ -107,8 +105,6 @@ export default class Avatar extends Component {
               width: pxToDp(size),
               height: pxToDp(size),
               borderRadius: pxToDp(size) / 2,
-              borderWidth: pxToDp(4),
-              borderColor: isVip ? '#FEF5E7' : '#fff',
               backgroundColor: backgroundColor,
               alignItems: 'center',
               justifyContent: 'center',
