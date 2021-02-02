@@ -42,4 +42,5 @@ export default {
   horn: '\ue62b',
   love: '\ue62e',
   like2: '\ue62f',
+  hot2: '\ue652'
 };
