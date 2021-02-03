@@ -49,7 +49,6 @@ class CourseCard extends Component {
 
     constructor(props) {
         super(props);
-
     }
 
     handleClick = () => {
