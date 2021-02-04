@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../pages/home';
 import ImageShow from '../pages/ImageShow';
-
+import DynamicList from '../pages/dynamic/dynamicList';
 // 组件
 import LocalStorageUtils from '../utils/LocalStorageUtils';
 import DynamicDetail from '../pages/dynamic/dynamicDetail';
@@ -38,6 +38,8 @@ class Nav extends React.Component {
           <Stack.Screen name="Test" component={Test} />
           {/*<Stack.Screen name="Tab" component={Tab} />*/}
           <Stack.Screen name="ImageShow" component={ImageShow} />
+          {/*动态列表*/}
+          <Stack.Screen name="DynamicList" component={DynamicList} />
         </Stack.Navigator>
       </NavigationContainer>
     );

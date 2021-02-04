@@ -14,6 +14,7 @@ class DynamicList extends React.Component {
       CollectionNum: props.CollectionNum,
       CommentNum: props.CommentNum,
       FabulousNum: props.FabulousNum,
+      isFollow: props.isFollowProps,
     };
   }
   static propTypes = {
@@ -26,6 +27,8 @@ class DynamicList extends React.Component {
     CommentNum: PropTypes.number,
     FabulousNum: PropTypes.number,
     timeGo: PropTypes.string,
+    DynamicPhone: PropTypes.string,
+    isFollowProps: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -37,6 +40,8 @@ class DynamicList extends React.Component {
     CommentNum: 665,
     FabulousNum: 664,
     timeGo: '一分钟',
+    DynamicPhone: 'One Plus 7T',
+    isFollowProps: false,
   };
   render() {
     const {
@@ -45,8 +50,9 @@ class DynamicList extends React.Component {
       DynamicText,
       DynamicLabelLists,
       timeGo,
+      DynamicPhone,
     } = this.props;
-    const { CollectionNum, CommentNum, FabulousNum } = this.state;
+    const { CollectionNum, CommentNum, FabulousNum, isFollow } = this.state;
 
     return (
       <View style={styles.DynamicList_box}>
@@ -61,10 +67,16 @@ class DynamicList extends React.Component {
           <View style={styles.Avatar_right}>
             <Text style={styles.Avatar_name}>冯意锦</Text>
             <Text style={styles.Avatar_phone}>IPhone 11在线</Text>
+            <Text style={styles.Avatar_name}>{DynamicUserName}</Text>
+            <Text style={styles.Avatar_phone}>{DynamicPhone}在线</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.changFollowBtn}>
             <View style={styles.Avatar_followBox}>
-              <Text style={styles.Avatar_followText}>关注</Text>
+              {isFollow ? (
+                <Text style={styles.Avatar_followText}>已关注</Text>
+              ) : (
+                <Text style={styles.Avatar_followText}>关注</Text>
+              )}
             </View>
           </TouchableOpacity>
         </View>
@@ -140,15 +152,21 @@ class DynamicList extends React.Component {
       </View>
     );
   }
-  changeCollectionNum(event) {
+  //点爱心
+  changeCollectionNum = () => {
     this.setState({ CollectionNum: this.state.CollectionNum + 1 });
-  }
-  changeCommentNum(event) {
+  };
+  //点评论
+  changeCommentNum = () => {
     this.setState({ CommentNum: this.state.CommentNum + 1 });
-  }
-  changeFabulousNum(event) {
+  };
+  //点棒棒
+  changeFabulousNum = () => {
     this.setState({ FabulousNum: this.state.FabulousNum + 1 });
-  }
+  };
+  changFollowBtn = () => {
+    this.setState({ isFollow: !this.state.isFollow });
+  };
 }
 
 const styles = StyleSheet.create({
@@ -157,6 +175,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
     paddingBottom: pxToDp(40),
+    height: pxToDp(880),
+    borderBottomWidth: pxToDp(1),
+    borderBottomColor: '#DDDDDDFF',
+    marginBottom: pxToDp(0),
   },
   DynamicList_top: {
     width: pxToDp(690),
@@ -246,8 +268,6 @@ export default DynamicList;
 
 //动态的标签小组件
 class DynamicLabel extends React.Component {
-  static navigationOptions = { title: null };
-
   constructor(props) {
     super(props);
     this.state = {};
