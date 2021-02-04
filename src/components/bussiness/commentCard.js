@@ -22,11 +22,15 @@ export default class CommentCard extends Component {
   };
   constructor() {
     super();
+    this.state = {
+      likeNumber: 25,
+    };
   }
   /*
    * type:child -> 子组件 嵌套
    * type:father(默认) ->仅有一个评论
    */
+  componentDidMount() {}
 
   //获取时间
   // getmyDate = () => {
@@ -214,7 +218,7 @@ export default class CommentCard extends Component {
 const styles = StyleSheet.create({
   card__box__father: {
     width: '100%',
-    ...padding(26, 0, 26, 0),
+    ...padding(26, 20, 26, 0),
     backgroundColor: '#ffffff',
   },
   card__box__child: {

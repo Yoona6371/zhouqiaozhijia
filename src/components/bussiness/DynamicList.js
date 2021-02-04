@@ -5,6 +5,7 @@ import { pxToDp } from '../../utils/pxToDp';
 import Avatar from '../common/Avatar';
 import { fontStyle } from '../../utils/StyleUtils';
 import Icon from '../common/Icon';
+
 class DynamicList extends React.Component {
   static navigationOptions = { title: null };
   constructor(props) {
@@ -58,7 +59,7 @@ class DynamicList extends React.Component {
             </View>
           </View>
           <View style={styles.Avatar_right}>
-            <Text style={styles.Avatar_name}>许先生</Text>
+            <Text style={styles.Avatar_name}>冯意锦</Text>
             <Text style={styles.Avatar_phone}>IPhone 11在线</Text>
           </View>
           <TouchableOpacity>
@@ -153,8 +154,9 @@ class DynamicList extends React.Component {
 const styles = StyleSheet.create({
   DynamicList_box: {
     width: '100%',
-    height: pxToDp(646),
     alignItems: 'center',
+    backgroundColor: '#ffffff',
+    paddingBottom: pxToDp(40),
   },
   DynamicList_top: {
     width: pxToDp(690),
