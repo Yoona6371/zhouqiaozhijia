@@ -9,6 +9,7 @@ import ImageShow from '../pages/ImageShow';
 import DynamicList from '../pages/dynamic/dynamicList';
 // 组件
 import LocalStorageUtils from '../utils/LocalStorageUtils';
+import DynamicDetail from '../pages/dynamic/dynamicDetail';
 
 // 测试
 import Test from '../pages/test';
@@ -33,6 +34,7 @@ class Nav extends React.Component {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Home" headerMode={'none'}>
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="DynamicDetail" component={DynamicDetail} />
           <Stack.Screen name="Test" component={Test} />
           {/*<Stack.Screen name="Tab" component={Tab} />*/}
           <Stack.Screen name="ImageShow" component={ImageShow} />
