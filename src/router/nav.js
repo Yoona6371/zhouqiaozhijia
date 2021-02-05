@@ -9,9 +9,10 @@ import {
 
 import Home from '../pages/home';
 import ImageShow from '../pages/ImageShow';
-
+import DynamicList from '../pages/dynamic/dynamicList';
 // 组件
 import LocalStorageUtils from '../utils/LocalStorageUtils';
+import DynamicDetail from '../pages/dynamic/dynamicDetail';
 
 // 测试
 import Test from '../pages/test';
