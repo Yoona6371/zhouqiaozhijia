@@ -10,6 +10,7 @@ import {
 import Home from '../pages/home';
 import ImageShow from '../pages/ImageShow';
 import DynamicList from '../pages/dynamic/dynamicList';
+import DynamicRelease from '../pages/dynamic/dynamicRelease';
 // 组件
 import LocalStorageUtils from '../utils/LocalStorageUtils';
 import DynamicDetail from '../pages/dynamic/dynamicDetail';
@@ -63,6 +64,10 @@ class Nav extends React.Component {
             }}
           />
           {/*<Stack.Screen name="Tab" component={Tab} />*/}
+
+          {/*动态列表*/}
+          <Stack.Screen name="DynamicList" component={DynamicList} />
+          <Stack.Screen name="DynamicRelease" component={DynamicRelease} />
           <Stack.Screen
             name="ImageShow"
             component={ImageShow}
