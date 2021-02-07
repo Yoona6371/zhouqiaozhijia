@@ -67,7 +67,7 @@ class ImageShow extends Component {
           onChange={(index) => {}} // 图片切换时触发
           onClick={() => {
             // 图片单击事件
-            this.props.navigation.goBack();
+            NavigationHelper.goBack();
           }}
         />
       </View>
