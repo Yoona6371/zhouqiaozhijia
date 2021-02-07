@@ -63,21 +63,21 @@ class BookCard extends Component {
                     <Image
                         style={{
                             resizeMode: "cover",
-                            height: pxToDp(210),
-                            width: pxToDp(170),
+                            height: pxToDp(190),
+                            width: pxToDp(150),
                         }}
                         source={bookImage}
                     /></View>
                 <View style={styles.bookCard__bookDes}>
                     <Text style={{
                         letterSpacing: pxToDp(2.5),
-                        ...fontStyle(34, 84, 45, 'normal', 'black', 'left'),
+                        ...fontStyle(28, 84, 45, '700', 'black', 'left'),
                         width: pxToDp(370),
                     }}>{title}</Text>
                     <Text style={{
                         marginRight: pxToDp(-50),
                         width: pxToDp(420),
-                        ...fontStyle(25, 30, 32, 'normal', 'grey', 'left')
+                        ...fontStyle(22, 30, 32, 'normal', 'grey', 'left')
                     }}>{chapterNum}个章节 | {this.bookCard__peopleNum()}人已学习该书籍</Text>
                 </View>
                 <View style={styles.bookCard__button}>
@@ -113,11 +113,11 @@ export default BookCard;
 
 const styles = StyleSheet.create({
     bookCard__wrap: {
-        width: pxToDp(690),
-        height: pxToDp(230),
+        width: pxToDp(660),
+        height: pxToDp(220),
         borderWidth: pxToDp(1),
         borderStyle: 'dotted',
-        borderColor: 'grey',
+        borderColor: 'white',
         borderRadius: pxToDp(10),
 
         //盒子阴影
@@ -125,19 +125,22 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 4, height: 4 },
         shadowOpacity: 0.8,
         shadowRadius: 6,
-        elevation: 1,
+        elevation: 0.5,
 
-        ...margin(30, 30, 30, 30),
+        ...margin(0, 0, 0, 15),
+        ...padding(15, 15, 15, 15),
         ...flexRowSpb,
     },
     bookCard__book: {
-        flex: 1.4,
-        height: pxToDp(230),
-        ...padding(8, 11, 8, 6),
+        flex: 1.3,
+        borderRadius: pxToDp(10),
+        overflow: 'hidden',
+        backgroundColor: 'green',
     },
     bookCard__bookDes: {
         flex: 3,
         height: pxToDp(115),
+        marginLeft: pxToDp(40),
         ...flexColumnSpb,
     },
     bookCard__button: {
