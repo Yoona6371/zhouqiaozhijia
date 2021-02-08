@@ -43,7 +43,7 @@ class Nav extends React.Component {
         }}
       >
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Test"
           headerMode={'none'}
           screenOptions={(navigation) => {
             NavigationHelper.navigation = navigation.navigation;
