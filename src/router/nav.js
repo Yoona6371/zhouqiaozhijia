@@ -6,7 +6,7 @@ import {
 } from '@react-navigation/stack';
 
 // 路由
-
+import Tab from './tab';
 import Home from '../pages/home';
 import ImageShow from '../pages/ImageShow';
 import DynamicList from '../pages/dynamic/dynamicList';
@@ -43,15 +43,15 @@ class Nav extends React.Component {
         }}
       >
         <Stack.Navigator
-          initialRouteName="Test"
+          initialRouteName="Tab"
           headerMode={'none'}
           screenOptions={(navigation) => {
             NavigationHelper.navigation = navigation.navigation;
           }}
         >
           <Stack.Screen
-            name="Home"
-            component={Home}
+            name="Tab"
+            component={Tab}
             options={{
               ...TransitionPresets.SlideFromRightIOS,
             }}

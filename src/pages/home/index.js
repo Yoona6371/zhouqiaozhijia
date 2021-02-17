@@ -1,30 +1,51 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Image,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-} from 'react-native';
+import { View, ScrollView, Image, StyleSheet } from 'react-native';
 // 组件
 import Icon from '../../components/common/Icon';
 import SearchInput from '../../components/bussiness/searchInput';
-import Banner from '../../components/bussiness/banner/index';
-import ModuleCard from '../../components/bussiness/ModuleCard';
-import ContainerCard from '../../components/bussiness/ContainerCard';
-import HomeTabBooks from './HomeTabBooks';
-
+import TopTabNavigator from '../../components/common/TopTabNavigator';
 // 工具
 import { deviceWidthDp, pxToDp } from '../../utils/pxToDp';
-import { padding, flexRowSpb, fontStyle } from '../../utils/StyleUtils';
-import HomeTabCourse from './HomeTabCourse';
+import { padding, flexRowSpb } from '../../utils/StyleUtils';
+import Recommend from './recommend';
 
 class Home extends Component {
-  _renderHomeTab() {
-    return <Text>123</Text>;
+  constructor(props) {
+    super(props);
+    this.state = {
+      pages: [
+        {
+          key: '推荐',
+          title: '推荐',
+          component: Recommend,
+        },
+        {
+          key: '排行榜',
+          title: '排行榜',
+          component: Recommend,
+        },
+        {
+          key: '学习',
+          title: '学习',
+          component: Recommend,
+        },
+      ],
+    };
   }
-  _renderHomeTabBooks() {}
+  _renderHomeTab() {
+    let { pages } = this.state;
+    return (
+      <ScrollView>
+        <TopTabNavigator
+          ifScrollEnabled={true}
+          type={3}
+          itemWidth={deviceWidthDp / 3}
+          routes={pages}
+        />
+      </ScrollView>
+    );
+  }
+
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -37,47 +58,6 @@ class Home extends Component {
           <Icon name={'earphone'} style={{ fontSize: pxToDp(36) }} />
         </View>
         {this._renderHomeTab()}
-        <ScrollView>
-          <View style={styles.banner_container}>
-            <Banner />
-          </View>
-          <View style={{ marginTop: pxToDp(30) }}>
-            <ModuleCard />
-          </View>
-          <View style={{ marginTop: pxToDp(50) }}>
-            <ContainerCard title={'热门需求'}>
-              <Banner type={2} />
-            </ContainerCard>
-          </View>
-          <View style={{ marginTop: pxToDp(50) }}>
-            <ContainerCard title={'每日书籍推荐'} rightRemove={true}>
-              <HomeTabBooks />
-            </ContainerCard>
-          </View>
-          <View style={{ marginTop: pxToDp(50) }}>
-            <ContainerCard title={'大家都在学'} rightRemove={true}>
-              <HomeTabCourse />
-            </ContainerCard>
-            <TouchableOpacity
-              onPress={() => NavigationHelper.navigate()}
-              style={{
-                width: pxToDp(690),
-                height: pxToDp(72),
-                alignSelf: 'center',
-                backgroundColor: '#FEF5E7',
-                marginTop: pxToDp(40),
-              }}
-            >
-              <Text
-                style={{
-                  ...fontStyle(26, 72, 72, 'normal', '#FE9E0E', 'center'),
-                }}
-              >
-                点击查看更多
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
       </View>
     );
   }
