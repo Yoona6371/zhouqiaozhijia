@@ -5779,6 +5779,7 @@ react-native-shadow-cards@^1.0.2:
   resolved "https://registry.npm.taobao.org/react-native-shadow-cards/download/react-native-shadow-cards-1.0.2.tgz#7c0f899ffa2f9143cee48d646ef87fd5c1384357"
   integrity sha1-fA+Jn/ovkUPO5I1kbvh/1cE4Q1c=
 
+<<<<<<< HEAD
 react-native-snap-carousel@^3.9.1:
   version "3.9.1"
   resolved "https://registry.npm.taobao.org/react-native-snap-carousel/download/react-native-snap-carousel-3.9.1.tgz#6fd9bd8839546c2c6043a41d2035afbc6fe0443e"
@@ -5794,6 +5795,8 @@ react-native-svg-uri@^1.2.3:
   dependencies:
     xmldom "^0.1.22"
 
+=======
+>>>>>>> ac6086401b211f989e0f0ab3938006ad9a6c9463
 react-native-tab-view@^2.15.2:
   version "2.15.2"
   resolved "https://registry.npm.taobao.org/react-native-tab-view/download/react-native-tab-view-2.15.2.tgz#4bc7832d33a119306614efee667509672a7ee64e"
