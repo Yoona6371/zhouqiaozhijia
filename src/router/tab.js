@@ -10,6 +10,7 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../pages/home';
 import BooksDetail from '../pages/books/detail';
+import personal from '../pages/personal/';
 import { pxToDp } from '../utils/pxToDp';
 
 import {
@@ -19,11 +20,11 @@ import {
   padding,
 } from '../utils/StyleUtils';
 import {
-  tabbar_design_selected,
   tabbar_home_selected,
+  tabbar_demand_selected,
   tabbar_message_selected,
   tabbar_mine_selected,
-  tabbar_design,
+  tabbar_demand,
   tabbar_home,
   tabbar_message,
   tabbar_mine,
@@ -32,13 +33,13 @@ import Svg from 'react-native-svg-uri';
 
 const tabSelectedArray = [
   tabbar_home_selected,
-  tabbar_design_selected,
+  tabbar_demand_selected,
   '',
   tabbar_message_selected,
   tabbar_mine_selected,
 ];
 
-const tabArray = [tabbar_home, tabbar_design, '', tabbar_message, tabbar_mine];
+const tabArray = [tabbar_home, tabbar_demand, '', tabbar_message, tabbar_mine];
 
 const Tab = createBottomTabNavigator();
 
@@ -202,10 +203,10 @@ class Tabs extends Component {
         }
       >
         <Tab.Screen name="首页" component={Home} />
-        <Tab.Screen name="设计师" component={BooksDetail} />
+        <Tab.Screen name="需求" component={BooksDetail} />
         <Tab.Screen name="发布" component={BooksDetail} />
         <Tab.Screen name="消息" component={BooksDetail} />
-        <Tab.Screen name="我的" component={BooksDetail} />
+        <Tab.Screen name="我的" component={personal} />
       </Tab.Navigator>
     );
   }

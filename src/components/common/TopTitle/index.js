@@ -75,9 +75,17 @@ export class index extends Component {
   showBackSvg = () => {
     const { color } = this.props;
     if (color === '#000') {
-      return <SvgUri svgXmlData={goBack} width={26} height={30} />;
+      return (
+        <SvgUri svgXmlData={goBack} width={pxToDp(26)} height={pxToDp(30)} />
+      );
     } else if (color === '#FFF') {
-      return <SvgUri svgXmlData={goBackWhite} width={26} height={30} />;
+      return (
+        <SvgUri
+          svgXmlData={goBackWhite}
+          width={pxToDp(26)}
+          height={pxToDp(30)}
+        />
+      );
     }
   };
   render() {
