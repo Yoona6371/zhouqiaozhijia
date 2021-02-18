@@ -17,7 +17,7 @@ export function onDoublePress() {
 // import { onDoublePress } from '...'
 // <TouchableOpacity onPress={this.doublePress}></TouchableOpacity>
 // doublePress=()=>{
-//   if(onDoublePress){
+//   if(onDoublePress()){
 //     // 双击执行的内容
 //   }
 // }

@@ -81,7 +81,6 @@ export default {
   editor3: '\ue684',
   wallet: '\ue686',
   editor4: '\ue687',
-  editor5: '\ue688',
   live: '\ue689',
   myResources: '\ue68a',
   gen: '\ue68b',

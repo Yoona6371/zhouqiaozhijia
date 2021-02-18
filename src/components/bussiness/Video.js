@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
   Text,
@@ -6,23 +6,25 @@ import {
   TouchableWithoutFeedback,
   TouchableOpacity,
   BackHandler,
+  ImageBackground,
+  Image,
 } from 'react-native';
 import Video from 'react-native-video';
 import Slider from '@react-native-community/slider';
 // 屏幕方向锁定: 他需要改变 原来Android文件代码，当然适配两端的话，IOS也是需要更改的。
 import Orientation from 'react-native-orientation-locker';
-import { deviceHeightDp, deviceWidthDp, pxToDp } from '../../../utils/pxToDp';
-import { onDoublePress } from '../../../utils/onDoublePress';
-// import { clear } from 'react-native/Libraries/LogBox/Data/LogBoxData';
+import { deviceHeightDp, deviceWidthDp, pxToDp } from '../../utils/pxToDp';
+import { onDoublePress } from '../../utils/onDoublePress';
+import { fontStyle, margin, padding } from '../../utils/StyleUtils';
 
 let screenWidth = deviceWidthDp;
 let screenHeight = deviceHeightDp;
 
-class Index extends React.Component {
+class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      uri: 'http://lilq.cn/music/te1.mp3',
+      cover: true,
       isPaused: true, //是暂停
       duration: 0, //总时长
       currentTime: 0, //当前播放时间
@@ -34,23 +36,39 @@ class Index extends React.Component {
       sliderHeight: pxToDp(40),
       //用来控制进入全屏的属性
       videoWidth: screenWidth,
-      videoHeight: pxToDp(422),
+      videoHeight: pxToDp(393.6),
       isFullScreen: false,
       isVisiblePausedSliderFullScreen: false,
     };
   }
 
-  componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
-  }
+  _onPress = () => {
+    this.setState({ cover: false });
+    if (onDoublePress()) {
+      this.setState({
+        isPaused: !this.state.isPaused,
+      });
+      return;
+    }
+    clearTimeout(timeID);
+    if (this.state.isVisiblePausedSliderFullScreen) {
+      this.setState({ isVisiblePausedSliderFullScreen: false });
+    } else {
+      this.setState({ isVisiblePausedSliderFullScreen: true });
+      var timeID = setTimeout(() => {
+        this.setState({ isVisiblePausedSliderFullScreen: false });
+      }, 5000);
+    }
+  };
 
   onBackAndroid = () => {
     this.setState({
       isFullScreen: false,
       videoWidth: screenWidth,
-      videoHeight: pxToDp(226),
+      videoHeight: pxToDp(393.6),
       sliderWidth: screenWidth * 0.5,
     });
+    this.props.onScreenChange();
     Orientation.lockToPortrait();
     return true;
   };
@@ -106,6 +124,7 @@ class Index extends React.Component {
     this.player.seek(value);
   };
   enterFullScreen = () => {
+    this.props.onScreenChange();
     if (!this.state.isFullScreen) {
       //1.改变宽高  2.允许进入全屏模式  3.如何配置屏幕旋转,不需要改变进度条盒子的显示和隐藏
       this.setState({
@@ -138,13 +157,15 @@ class Index extends React.Component {
       console.log('如果是横屏，就将其旋转过来');
       Orientation.lockToPortrait();
     }
+    BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
   }
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackAndroid);
   }
+
   render() {
-    let {
+    const {
       duration,
       sliderValue,
       currentTime,
@@ -153,17 +174,13 @@ class Index extends React.Component {
       rate,
       sliderWidth,
       sliderHeight,
-      uri,
+      cover,
+      videoWidth,
+      videoHeight,
     } = this.state;
-    // 播放按钮组件：是否显示
-    let playButtonComponent = (
-      <TouchableWithoutFeedback onPress={this.changePausedState}>
-        <View style={styles.playBtn} />
-      </TouchableWithoutFeedback>
-    );
-    let pausedBtn = this.state.isPaused ? playButtonComponent : null;
+    const { uri, title, title_second, price } = this.props;
     // 暂停按钮、进度条、全屏按钮 是否显示
-    let pausedSliderFullComponent = (
+    const pausedSliderFullComponent = (
       <View style={{ position: 'absolute', bottom: 0 }}>
         <View
           style={{
@@ -178,7 +195,8 @@ class Index extends React.Component {
               style={{ width: sliderWidth, height: sliderHeight }}
               value={sliderValue}
               maximumValue={duration}
-              thumbTintColor="#000" //开关夹点的yanse
+              thumbTintColor="#000"
+              //开关夹点的yanse
               minimumTrackTintColor="red"
               maximumTrackTintColor="#ccc"
               step={1}
@@ -207,41 +225,105 @@ class Index extends React.Component {
         </View>
       </View>
     );
-    let pausedSliderFull = this.state.isVisiblePausedSliderFullScreen
-      ? pausedSliderFullComponent
-      : null;
 
     return (
       <View>
-        <TouchableWithoutFeedback
-          onPress={this._changePauseSliderFullState}
-          onResponderMove={this._onStartShouldSetResponder}
-        >
-          <Video
-            source={{
-              uri: `${uri}`,
-            }}
-            ref={(ref) => {
-              this.player = ref;
-            }}
-            style={{
-              width: this.state.videoWidth,
-              height: this.state.videoHeight,
-              backgroundColor: '#ffc1c1',
-            }}
-            allowsExternalPlayback={false} // 不允许导出 或 其他播放器播放
-            paused={isPaused} // 控制视频是否播放
-            resizeMode="cover"
-            onLoad={(e) => this.customerOnload(e)}
-            onProgress={(e) => this.customerOnprogress(e)}
-            fullscreen={isFullScreen}
-            rate={rate}
-          />
-        </TouchableWithoutFeedback>
-        {/* 播放的按钮：点击之后需要消失 */}
-        {pausedBtn}
-        {/* 暂停按钮，进度条，全屏按钮 */}
-        {pausedSliderFull}
+        {cover ? (
+          <ImageBackground
+            source={require('../../asserts/images/video-back.png')}
+            style={{ width: videoWidth, height: videoHeight }}
+          >
+            <Text
+              style={{
+                ...fontStyle(36, 76, 38, 'bold', '#fff', 'center'),
+                alignSelf: 'center',
+                width: pxToDp(500),
+                marginTop: pxToDp(90),
+              }}
+              numberOfLines={2}
+            >
+              {title}
+            </Text>
+            <Text
+              style={{
+                ...fontStyle(24, 26, 26, 'bold', '#fff', 'center'),
+                marginTop: pxToDp(30),
+                alignSelf: 'center',
+              }}
+            >
+              {title_second}
+            </Text>
+            <View
+              style={{
+                ...margin(30, 40, 30, 0),
+                backgroundColor: '#fff',
+                flex: 1,
+                borderTopLeftRadius: pxToDp(30),
+                borderTopRightRadius: pxToDp(30),
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                ...padding(40, 0, 40, 0),
+              }}
+            >
+              <Text
+                style={{
+                  ...fontStyle(36, 34, 34, 'bold', '#FF2A46'),
+                  alignSelf: 'center',
+                }}
+              >
+                {price}
+              </Text>
+              <TouchableOpacity
+                style={{
+                  alignSelf: 'center',
+                }}
+                onPress={this._onPress}
+              >
+                <Image
+                  source={require('../../asserts/images/play.png')}
+                  style={{
+                    width: pxToDp(50),
+                    height: pxToDp(50),
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
+        ) : (
+          <View>
+            <TouchableWithoutFeedback
+              onPress={this._onPress}
+              onResponderMove={this._onStartShouldSetResponder}
+            >
+              <Video
+                source={{
+                  uri: `${uri}`,
+                }}
+                ref={(ref) => {
+                  this.player = ref;
+                }}
+                style={{
+                  width: videoWidth,
+                  height: videoHeight,
+                  backgroundColor: '#ffc1c1',
+                }}
+                allowsExternalPlayback={true} // 不允许导出 或 其他播放器播放
+                paused={isPaused} // 控制视频是否播放
+                resizeMode="cover"
+                onLoad={(e) => this.customerOnload(e)}
+                onProgress={(e) => this.customerOnprogress(e)}
+                fullscreen={isFullScreen}
+                rate={rate}
+              />
+            </TouchableWithoutFeedback>
+            {/* 暂停按钮，进度条，全屏按钮 */}
+            {this.state.isVisiblePausedSliderFullScreen ? (
+              pausedSliderFullComponent
+            ) : (
+              <></>
+            )}
+          </View>
+        )}
       </View>
     );
   }

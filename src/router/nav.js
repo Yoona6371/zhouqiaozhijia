@@ -7,10 +7,12 @@ import {
 
 // 路由
 import Tab from './tab';
-import Home from '../pages/home';
 import ImageShow from '../pages/ImageShow';
 import DynamicList from '../pages/dynamic/dynamicList';
 import DynamicRelease from '../pages/dynamic/dynamicRelease';
+import Demand from '../pages/demand';
+import VideoDetail from '../pages/video/detail';
+
 // 组件
 import LocalStorageUtils from '../utils/LocalStorageUtils';
 import DynamicDetail from '../pages/dynamic/dynamicDetail';
@@ -63,8 +65,14 @@ class Nav extends React.Component {
               ...TransitionPresets.SlideFromRightIOS,
             }}
           />
+          <Stack.Screen
+            name="VideoDetail"
+            component={VideoDetail}
+            options={{
+              ...TransitionPresets.SlideFromRightIOS,
+            }}
+          />
           {/*<Stack.Screen name="Tab" component={Tab} />*/}
-
           {/*动态列表*/}
           <Stack.Screen name="DynamicList" component={DynamicList} />
           <Stack.Screen name="DynamicRelease" component={DynamicRelease} />
