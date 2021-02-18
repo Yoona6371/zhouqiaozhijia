@@ -28,7 +28,7 @@ const COLORARRAY = [
 ];
 
 class BookCard extends Component {
-  static propTypes = {
+  static PropTypes = {
     bookImage: PropTypes.oneOfType([PropTypes.number, PropTypes.object]),
     title: PropTypes.string,
     chapterNum: PropTypes.number,
@@ -50,59 +50,57 @@ class BookCard extends Component {
   };
 
   bookCard__peopleNum = () => {
-    if (this.props.peopleNum < 10000) return this.props.peopleNum;
-    else return Math.floor(this.props.peopleNum / 10000).toString() + 'W+';
+    if (this.props.peopleNum < 10000) {
+      return this.props.peopleNum;
+    } else {
+      return Math.floor(this.props.peopleNum / 10000).toString() + 'W+';
+    }
   };
 
   render() {
     const { bookImage, title, description, chapterNum, peopleNum } = this.props;
     return (
-      <View style={{ ...padding(31, 21, 31, 21), backgroundColor:'white', ...flexRowSpb }}>
-        <Image
-          style={{
-            resizeMode: 'cover',
-            height: pxToDp(175),
-            width: pxToDp(134),
-          }}
-          source={bookImage}
-        />
-        <View
-          style={{
-            ...flexColumnSpb,
-            height: pxToDp(175),
-            marginLeft: pxToDp(25),
-          }}
-        >
+      <View style={styles.bookCard__wrap}>
+        <View style={styles.bookCard__book}>
+          <Image
+            style={{
+              resizeMode: 'cover',
+              height: pxToDp(190),
+              width: pxToDp(150),
+            }}
+            source={bookImage}
+          />
+        </View>
+        <View style={styles.bookCard__bookDes}>
           <Text
             style={{
-              letterSpacing: pxToDp(5),
-              width: pxToDp(432),
-              ...fontStyle(29, 50, 50, '700', 'black', 'left'),
+              letterSpacing: pxToDp(2.5),
+              ...fontStyle(28, 84, 45, '700', 'black', 'left'),
+              width: pxToDp(370),
             }}
           >
             {title}
           </Text>
           <Text
             style={{
-              width: pxToDp(432),
-              ...fontStyle(23, 30, 32, 'normal', '#acb0b3', 'left'),
+              width: pxToDp(420),
+              ...fontStyle(22, 30, 32, 'normal', 'grey', 'left'),
             }}
           >
             {chapterNum}个章节 | {this.bookCard__peopleNum()}人已学习该书籍
           </Text>
         </View>
-        <View style={{ height: pxToDp(175) }}>
+        <View style={styles.bookCard__button}>
           <LinearGradient
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             colors={['#FFD801', '#ffc005', '#e6ad05']}
             style={{
-              width: pxToDp(97),
-              height: pxToDp(56),
+              width: pxToDp(110),
+              height: pxToDp(60),
               borderBottomLeftRadius: pxToDp(30),
               borderTopRightRadius: pxToDp(30),
               borderBottomRightRadius: pxToDp(30),
-              borderTopLeftRadius: pxToDp(10),
             }}
           >
             <TouchableOpacity
@@ -112,10 +110,9 @@ class BookCard extends Component {
             >
               <Text
                 style={{
-                  letterSpacing: pxToDp(3),
-                  lineHeight: pxToDp(56),
+                  lineHeight: pxToDp(55),
                   color: 'white',
-                  fontSize: pxToDp(25),
+                  fontSize: pxToDp(26),
                 }}
               >
                 详情
@@ -129,3 +126,40 @@ class BookCard extends Component {
 }
 
 export default BookCard;
+
+const styles = StyleSheet.create({
+  bookCard__wrap: {
+    width: pxToDp(686),
+    height: pxToDp(220),
+    borderColor: 'white',
+    borderRadius: pxToDp(10),
+
+    //盒子阴影
+    // shadowColor: '#000',
+    // shadowOffset: { width: 4, height: 4 },
+    // shadowOpacity: 0.8,
+    // shadowRadius: 6,
+    // elevation: 5,
+
+    ...margin(0, 0, 0, 15),
+    ...flexRowSpb,
+    alignSelf: 'center',
+    justifyContent: 'flex-start',
+  },
+  bookCard__book: {
+    borderRadius: pxToDp(10),
+    overflow: 'hidden',
+    // backgroundColor: 'green',
+  },
+  bookCard__bookDes: {
+    flex: 3,
+    height: pxToDp(115),
+    marginLeft: pxToDp(24),
+    ...flexColumnSpb,
+    alignItems: 'flex-start',
+  },
+  bookCard__button: {
+    height: pxToDp(230),
+    ...padding(0, 20, 0, 0),
+  },
+});
