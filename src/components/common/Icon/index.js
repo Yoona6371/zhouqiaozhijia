@@ -8,7 +8,10 @@ import IconMap from '../../../constants/icon';
  */
 
 const Icon = (props) => (
-  <Text style={{ fontFamily: 'iconfont', ...props.style }}>
+  <Text
+    style={{ fontFamily: 'iconfont', ...props.style }}
+    onPress={props.onPress}
+  >
     {IconMap[props.name]}
   </Text>
 );
