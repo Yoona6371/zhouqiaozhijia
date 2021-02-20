@@ -19,7 +19,7 @@ import DynamicDetail from '../pages/dynamic/dynamicDetail';
 
 // 测试
 import Test from '../pages/test';
-
+import Rank from '../pages/rank/'
 const Stack = createStackNavigator();
 
 class Nav extends React.Component {
@@ -45,12 +45,19 @@ class Nav extends React.Component {
         }}
       >
         <Stack.Navigator
-          initialRouteName="Tab"
+          initialRouteName="Rank"
           headerMode={'none'}
           screenOptions={(navigation) => {
             NavigationHelper.navigation = navigation.navigation;
           }}
         >
+          <Stack.Screen
+            name="Rank"
+            component={Rank}
+            options={{
+              ...TransitionPresets.SlideFromRightIOS,
+            }}
+          />
           <Stack.Screen
             name="Tab"
             component={Tab}
