@@ -35,8 +35,11 @@
     "react-native-shadow": "^1.2.2",
     "react-native-shadow-cards": "^1.0.2",
     "react-native-snap-carousel": "^3.9.1",
+    "react-native-star-rating": "^1.1.0",
     "react-native-svg": "^12.1.0",
     "react-native-tab-view": "^2.15.2",
+    "react-native-textarea": "^1.0.4",
+    "react-native-vector-icons": "^8.0.0",
     "react-native-video": "^5.1.1"
   },
   "devDependencies": {

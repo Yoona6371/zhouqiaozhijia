@@ -12,6 +12,7 @@ import DynamicList from '../pages/dynamic/dynamicList';
 import DynamicRelease from '../pages/dynamic/dynamicRelease';
 import Demand from '../pages/demand';
 import VideoDetail from '../pages/video/detail';
+import EvaluateRelease from '../pages/personal/evaluate/evaluate-release';
 
 // 组件
 import LocalStorageUtils from '../utils/LocalStorageUtils';
@@ -19,7 +20,7 @@ import DynamicDetail from '../pages/dynamic/dynamicDetail';
 
 // 测试
 import Test from '../pages/test';
-import Rank from '../pages/rank/'
+import Rank from '../pages/rank/';
 const Stack = createStackNavigator();
 
 class Nav extends React.Component {
@@ -54,6 +55,13 @@ class Nav extends React.Component {
           <Stack.Screen
             name="Rank"
             component={Rank}
+            options={{
+              ...TransitionPresets.SlideFromRightIOS,
+            }}
+          />
+          <Stack.Screen
+            name="EvaluateRelease"
+            component={EvaluateRelease}
             options={{
               ...TransitionPresets.SlideFromRightIOS,
             }}
