@@ -40,14 +40,10 @@
     "react-native-star-rating": "^1.1.0",
     "react-native-svg": "^12.1.0",
     "react-native-tab-view": "^2.15.2",
-<<<<<<< HEAD
-    "react-native-video": "^5.1.1",
-    "socket.io-client": "^3.1.1"
-=======
+    "socket.io-client": "^3.1.1",
     "react-native-textarea": "^1.0.4",
     "react-native-vector-icons": "^8.0.0",
     "react-native-video": "^5.1.1"
->>>>>>> cadad33fea0a791386bebff4714b41b615712e14
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
