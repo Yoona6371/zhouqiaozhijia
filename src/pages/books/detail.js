@@ -112,9 +112,7 @@ class Books extends Component {
         <TopTitle
           bgColor="white"
           color="#000"
-          returnBack={() => {
-            NavigationHelper.goBack();
-          }}
+          returnBack={this.sss}
           onPress={this.hello}
           title="书籍详情"
           showBtn={false}

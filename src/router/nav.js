@@ -7,34 +7,17 @@ import {
 
 // 路由
 import Tab from './tab';
-// 图片
 import ImageShow from '../pages/ImageShow';
-
-// ----------------用户------------------
-import LoginAndRegister from '../pages/users/loginAndRegister';
-
-// ----------------首页------------------
-import BookDetial from '../pages/books/detail';
+import DynamicList from '../pages/dynamic/dynamicList';
+import DynamicRelease from '../pages/dynamic/dynamicRelease';
+import Demand from '../pages/demand';
 import VideoDetail from '../pages/video/detail';
 import EvaluateRelease from '../pages/personal/evaluate/evaluate-release';
 
-// ----------------设计------------------
-import HomeOthers from '../pages/design/others';
-
-// ----------------动态------------------
-import DynamicRelease from '../pages/dynamic/dynamicRelease';
-
-// ----------------动态------------------
-import MessageNotice from '../pages/message/notice';
-import MessageDetail from '../pages/message/detail';
-
-// ---------------个人中心----------------
-import MyWallet from '../pages/personal/myWallet';
-
-// 需求
-import Demand from '../pages/demand';
 // 组件
 import LocalStorageUtils from '../utils/LocalStorageUtils';
+import DynamicDetail from '../pages/dynamic/dynamicDetail';
+
 // 测试
 import Test from '../pages/test';
 import Rank from '../pages/rank/';
@@ -69,7 +52,6 @@ class Nav extends React.Component {
             NavigationHelper.navigation = navigation.navigation;
           }}
         >
-          {/* 从这里开始是pages */}
           <Stack.Screen
             name="Rank"
             component={Rank}
@@ -98,38 +80,17 @@ class Nav extends React.Component {
               ...TransitionPresets.SlideFromRightIOS,
             }}
           />
-          {/* ************** 用户 ************** */}
           <Stack.Screen
-            name="LoginAndRegister"
-            component={LoginAndRegister}
+            name="VideoDetail"
+            component={VideoDetail}
             options={{
               ...TransitionPresets.SlideFromRightIOS,
             }}
           />
-
-          {/* ************** 首页 ************** */}
-          {/* 视频详情 */}
-          <Stack.Screen name="VideoDetail" component={VideoDetail} />
-          {/* 书籍详情 */}
-          <Stack.Screen name="BookDetail" component={BookDetial} />
-
-          {/* ************** 设计 ************** */}
-          {/* 他人主页 */}
-          <Stack.Screen name="HomeOthers" component={HomeOthers} />
-
-          {/* ************** 动态 ************** */}
-          {/* 发布动态 */}
+          {/*<Stack.Screen name="Tab" component={Tab} />*/}
+          {/*动态列表*/}
+          <Stack.Screen name="DynamicList" component={DynamicList} />
           <Stack.Screen name="DynamicRelease" component={DynamicRelease} />
-
-          {/* ************** 动态 ************** */}
-          <Stack.Screen name="MessageNotice" component={MessageNotice} />
-          <Stack.Screen name="MessageDetail" component={MessageDetail} />
-
-          {/* ************** 个人中心 ************** */}
-          {/* 我的钱包 */}
-          <Stack.Screen name="MyWallet" component={MyWallet} />
-
-          {/* 图片 */}
           <Stack.Screen
             name="ImageShow"
             component={ImageShow}
