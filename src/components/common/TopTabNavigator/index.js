@@ -30,7 +30,36 @@ export default class TopTabNavigator extends PureComponent {
     ],
     type: 1,
   };
-
+  get bgC() {
+    const { type } = this.props;
+    if (type === 1) {
+      return {
+        backgroundColor: '#fff',
+        elevation: 0,
+        shadowOpacity: 0
+      }
+    } else if (type === 2) {
+      return {
+        backgroundColor: '#fff',
+        elevation: 0,
+        shadowOpacity: 0
+      }
+    } else if (type === 3) {
+      return {
+        backgroundColor: '#fff',
+        elevation: 0,
+        shadowOpacity: 0
+      }
+    } else if (type === 4) {
+      return {
+        borderTopLeftRadius: pxToDp(40),
+        borderTopRightRadius: pxToDp(40),
+        backgroundColor: '#FF7200',
+        elevation: 0,
+        shadowOpacity: 0,
+      }
+    }
+  };
   get bottomLine() {
     const { itemWidth, type } = this.props;
     if (type === 1) {
@@ -57,6 +86,13 @@ export default class TopTabNavigator extends PureComponent {
         marginBottom: pxToDp(18),
         backgroundColor: '#000000',
       };
+    } else if (type === 4) {
+      return {
+        width: itemWidth * 0.1,
+        marginLeft: itemWidth * 0.45,
+        marginBottom: pxToDp(18),
+        backgroundColor: '#FFF',
+      };
     }
   }
 
@@ -66,18 +102,20 @@ export default class TopTabNavigator extends PureComponent {
       <TabBar
         scrollEnabled={ifScrollEnabled}
         {...props}
-        style={{ backgroundColor: '#fff', elevation: 0, shadowOpacity: 0 }}
+        style={this.bgC}
         labelStyle={{ fontSize: pxToDp(32), fontWeight: 'normal' }}
         activeColor={
           type === 1
             ? '#FFFFFF'
             : type === 2
-            ? '#FE9E0E'
-            : type === 3
-            ? '#000000'
-            : '#FFFFFF'
+              ? '#FE9E0E'
+              : type === 3
+                ? '#000000'
+                : type === 4
+                  ? '#fff'
+                  : '#FFFFFF'
         }
-        inactiveColor={'#999'}
+        inactiveColor={type === 4 ? '#FFE4D8' : '#999'}
         indicatorStyle={this.bottomLine}
         tabStyle={{ width: 'auto', minWidth: itemWidth }}
         renderLabel={({ route, focused, color }) => (
@@ -125,10 +163,10 @@ export default class TopTabNavigator extends PureComponent {
           type === 1
             ? '#FFFFFF'
             : type === 2
-            ? '#FE9E0E'
-            : type === 3
-            ? '#000000'
-            : '#FFFFFF'
+              ? '#FE9E0E'
+              : type === 3
+                ? '#000000'
+                : '#FFFFFF'
         }
         inactiveTintColor={'#999'}
         indicatorStyle={this.bottomLine}

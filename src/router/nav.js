@@ -16,6 +16,7 @@ import LoginAndRegister from '../pages/users/loginAndRegister';
 // ----------------首页------------------
 import BookDetial from '../pages/books/detail';
 import VideoDetail from '../pages/video/detail';
+import EvaluateRelease from '../pages/personal/evaluate/evaluate-release';
 
 // ----------------设计------------------
 import HomeOthers from '../pages/design/others';
@@ -36,7 +37,7 @@ import Demand from '../pages/demand';
 import LocalStorageUtils from '../utils/LocalStorageUtils';
 // 测试
 import Test from '../pages/test';
-
+import Rank from '../pages/rank/';
 const Stack = createStackNavigator();
 
 class Nav extends React.Component {
@@ -62,13 +63,27 @@ class Nav extends React.Component {
         }}
       >
         <Stack.Navigator
-          initialRouteName="Tab"
+          initialRouteName="Rank"
           headerMode={'none'}
           screenOptions={(navigation) => {
             NavigationHelper.navigation = navigation.navigation;
           }}
         >
           {/* 从这里开始是pages */}
+          <Stack.Screen
+            name="Rank"
+            component={Rank}
+            options={{
+              ...TransitionPresets.SlideFromRightIOS,
+            }}
+          />
+          <Stack.Screen
+            name="EvaluateRelease"
+            component={EvaluateRelease}
+            options={{
+              ...TransitionPresets.SlideFromRightIOS,
+            }}
+          />
           <Stack.Screen
             name="Tab"
             component={Tab}

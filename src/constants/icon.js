@@ -93,4 +93,7 @@ export default {
   voice: '\ue694',
   plus: '\ue696',
   account: '\ue697',
+  // midEvaluate: '\ue65a',
+  // badEvaluate: '\ue631',
+  // goodEvaluate: '\ue638',
 };
