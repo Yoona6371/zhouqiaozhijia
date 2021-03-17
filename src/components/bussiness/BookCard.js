@@ -47,6 +47,7 @@ class BookCard extends Component {
 
   handleClick = () => {
     console.log('跳转到该书籍');
+    NavigationHelper.navigate('BookDetail');
   };
 
   bookCard__peopleNum = () => {

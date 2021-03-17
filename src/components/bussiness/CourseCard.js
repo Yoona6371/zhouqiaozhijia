@@ -52,6 +52,7 @@ class CourseCard extends Component {
 
   handleClick = () => {
     console.log('跳转到课程');
+    NavigationHelper.navigate('VideoDetail');
   };
 
   render() {

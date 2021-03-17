@@ -9,7 +9,9 @@ import {
 } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../pages/home';
-import BooksDetail from '../pages/books/detail';
+import DynamicDetail from '../pages/dynamic/dynamicDetail';
+import Demand from '../pages/demand';
+import Message from '../pages/message';
 import personal from '../pages/personal/';
 import { pxToDp } from '../utils/pxToDp';
 
@@ -203,9 +205,9 @@ class Tabs extends Component {
         }
       >
         <Tab.Screen name="首页" component={Home} />
-        <Tab.Screen name="需求" component={BooksDetail} />
-        <Tab.Screen name="发布" component={BooksDetail} />
-        <Tab.Screen name="消息" component={BooksDetail} />
+        <Tab.Screen name="需求" component={Demand} />
+        <Tab.Screen name="动态" component={DynamicDetail} />
+        <Tab.Screen name="消息" component={Message} />
         <Tab.Screen name="我的" component={personal} />
       </Tab.Navigator>
     );
