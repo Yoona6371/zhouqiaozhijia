@@ -181,10 +181,19 @@ android {
 }
 
 dependencies {
+    // 如果你需要支持Android4.0(API level 14)之前的版本
+    implementation 'com.facebook.fresco:animated-base-support:1.3.0'
+
+    // 如果你需要支持GIF动图
+    implementation 'com.facebook.fresco:animated-gif:2.0.0'
+
+    // 如果你需要支持WebP格式，包括WebP动图
+    implementation 'com.facebook.fresco:animated-webp:2.1.0'
+    implementation 'com.facebook.fresco:webpsupport:2.0.0'
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
-
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
